@@ -1,0 +1,17 @@
+언리얼 클래스 상속관계 노션에 정리
+
+전방 선언(forward declaration)
+
+컴포넌트 노출
+c++코드에서 컴포넌트 부착하기
+
+폰으로 입력 받기, 입력 액션 매핑
+add local offset()으로 폰 이동하기
+add local rotation()으로 폰 회전하기
+위의 두 함수의 bsweep 변수
+
+플레이어 컨트롤러로 폰에 빙의
+
+GetPlayerPawn
+
+timer로 코루틴 구현
