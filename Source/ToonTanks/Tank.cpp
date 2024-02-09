@@ -17,7 +17,14 @@ ATank::ATank()
 void ATank :: BeginPlay()
 {
     Super::BeginPlay();
-    PlayerControllerRef = Cast<APlayerController>(GetController());
+    PlayerController = Cast<APlayerController>(GetController());
+}
+
+void ATank::HandleDesruction()
+{
+	Super::HandleDesruction();
+    SetActorHiddenInGame(true);
+    SetActorTickEnabled(false);
 }
 
 // 축 매핑에 함수를 바인딩
@@ -33,10 +40,10 @@ void ATank::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-    if(PlayerControllerRef)
+    if(PlayerController)
     {
         FHitResult HitResult;
-        PlayerControllerRef->GetHitResultUnderCursor(ECollisionChannel::ECC_Visibility,false,HitResult);
+        PlayerController->GetHitResultUnderCursor(ECollisionChannel::ECC_Visibility,false,HitResult);
 
         RotateTurret(HitResult.ImpactPoint);
     }
@@ -56,4 +63,9 @@ void ATank::Rotate(float Value)
     DeltaRotator.Yaw = Value * RotateRate * UGameplayStatics::GetWorldDeltaSeconds(this);
     //bSweep으로 이동한 후 충돌 감지 기능 활성화
     AddActorLocalRotation(DeltaRotator,true);
+}
+
+APlayerController* ATank:: GetPlayerController() const
+{
+    return this->PlayerController;
 }

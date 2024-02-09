@@ -32,8 +32,11 @@ public:
 	ATank();
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 	virtual void Tick(float DeltaTime) override;
+	APlayerController* GetPlayerController() const;
+	void HandleDesruction();
+
 private:
 	void Move(float Value);
 	void Rotate(float Value);
-	APlayerController* PlayerControllerRef;
+	APlayerController* PlayerController;
 };

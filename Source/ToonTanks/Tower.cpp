@@ -52,3 +52,9 @@ bool ATower::CheckTargetInFireRange()
     if(!TargetTank) return false;
     return FVector::Dist(GetActorLocation(), TargetTank->GetActorLocation()) <= FireRange;
 }
+
+void ATower:: HandleDesruction()
+{
+    Super::HandleDesruction();
+    Destroy();
+}
