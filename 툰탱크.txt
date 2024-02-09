@@ -15,3 +15,9 @@ add local rotation()으로 폰 회전하기
 GetPlayerPawn
 
 timer로 코루틴 구현
+
+135강의, UClass와 리플렉션 시스템(c++과 블루프린트의 연결), SpawnActor에서 UClass가 왜 필요한지 (cpp클래스와 BP클래스가 가지는 차이점의 이해)
+
+이벤트에 함수 바인딩할 때는 함수 인자를 잘 지켜야한다.
+OnComponentHit 이벤트에 함수 바인딩
+projectile에서 onComponentHit 이벤트 발생시 UGamePlayStatics::ApplyDamage 호출 -> 피격 액터의 OnTakeAnyDamage 이벤트 호출 -> 피격 액터의 OnTakeAnyDamage에 바인딩 된 함수 호출

@@ -46,5 +46,8 @@ void ABasePawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
 void ABasePawn::Fire()
 {
-	UE_LOG(LogTemp, Display, TEXT("fire"));
-}
+	FVector Location = ProjectileSpawnPoint->GetComponentLocation();
+	FRotator Rotator = ProjectileSpawnPoint -> GetComponentRotation();
+	auto Projectile = GetWorld()->SpawnActor<AProjectile>(ProjectileClass,Location,Rotator);
+	Projectile -> SetOwner(this);
+	}
