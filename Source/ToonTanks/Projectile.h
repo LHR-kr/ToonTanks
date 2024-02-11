@@ -32,7 +32,23 @@ private:
 
 	UPROPERTY(EditAnywhere)
 	float Damage = 50.f;
-		
+
+	UPROPERTY(EditAnywhere,Category = "Combat")
+	class UParticleSystem* HitParticle;
+	
+	UPROPERTY(VisibleAnywhere, Category = "Combat")
+	class UParticleSystemComponent* ProjectileTrailParticle;
+
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	class USoundBase* LaunchSound;
+
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	class USoundBase* ExplodeSound;
+
+	UPROPERTY(EditDefaultsOnly,Category = "Combat")
+	//블루프린트라서  TSubClass를 하나 만들어준다.
+	TSubclassOf<class UCameraShakeBase> HitCameraShake;
+
 	UFUNCTION()
 	void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherHitComponent, FVector NormalImpulse, const FHitResult& HitResult);
 };

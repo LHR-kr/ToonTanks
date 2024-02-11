@@ -17,7 +17,7 @@ void ATower::Tick(float DeltaTime)
     float DistanceTargetTank = FVector::Dist(GetActorLocation(), TargetTank->GetActorLocation());
     //거리가 유효 사거리 안이면
     //터렛을 회전
-    if(CheckTargetInFireRange())
+    if(CheckTargetInFireRange() && TargetTank->GetIsAlive())
     {
         RotateTurret(TargetTank->GetActorLocation());
     }
@@ -39,7 +39,7 @@ void ATower::CheckFireCondition()
 {
  
 
-    if(CheckTargetInFireRange())
+    if(CheckTargetInFireRange() && TargetTank->GetIsAlive() )
     {
         Fire();
     }

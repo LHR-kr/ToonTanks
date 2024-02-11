@@ -17,14 +17,18 @@ ATank::ATank()
 void ATank :: BeginPlay()
 {
     Super::BeginPlay();
+    IsAlive = true;
     PlayerController = Cast<APlayerController>(GetController());
 }
 
 void ATank::HandleDesruction()
 {
 	Super::HandleDesruction();
+    IsAlive = false;
     SetActorHiddenInGame(true);
     SetActorTickEnabled(false);
+    if(DieCameraShake)
+		GetWorld()->GetFirstPlayerController()->ClientStartCameraShake(DieCameraShake);
 }
 
 // 축 매핑에 함수를 바인딩
@@ -68,4 +72,8 @@ void ATank::Rotate(float Value)
 APlayerController* ATank:: GetPlayerController() const
 {
     return this->PlayerController;
+}
+bool ATank:: GetIsAlive() const
+{
+    return IsAlive;
 }

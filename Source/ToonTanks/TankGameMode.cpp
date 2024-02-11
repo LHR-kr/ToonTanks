@@ -4,6 +4,7 @@
 #include "TankGameMode.h"
 #include "Tank.h"
 #include "Tower.h"
+#include "ToonTankPlayerController.h"
 #include "Kismet/GameplayStatics.h"
 
 void ATankGameMode::ActorDied(AActor* DiedActor)
@@ -11,15 +12,18 @@ void ATankGameMode::ActorDied(AActor* DiedActor)
     if(DiedActor == Tank)
     {
         Tank->HandleDesruction();
-        if(Tank->GetPlayerController())
+        if(ToonTankPlayerController)
         {
-            Tank->DisableInput(Tank->GetPlayerController());
-            Tank->GetPlayerController()-> bShowMouseCursor = false;
+            ToonTankPlayerController->SetPlayerEnabledState(false);
         }
+        FinishGame(false);
     }
     else if( ATower* DestroyedActor = Cast<ATower>(DiedActor))
     {
         DestroyedActor -> HandleDesruction();
+        --TowerCount;
+        if(TowerCount == 0)
+            FinishGame(true);
     }
 }
 
@@ -27,5 +31,34 @@ void ATankGameMode::BeginPlay()
 {
     Super::BeginPlay();
 
+    HandleGameStart();
+    
+
+}
+
+void ATankGameMode::HandleGameStart()
+{
+    TowerCount = GetTowerCount();
     Tank = Cast<ATank>(UGameplayStatics::GetPlayerPawn(this,0));
+    ToonTankPlayerController = Cast<AToonTankPlayerController>(UGameplayStatics::GetPlayerController(this,0));
+    StartGame();
+    if(ToonTankPlayerController)
+    {
+        ToonTankPlayerController->SetPlayerEnabledState(false);
+
+        FTimerHandle StartTimerHandle;
+        FTimerDelegate PlayerEnableInputTimeDelegate = FTimerDelegate::CreateUObject(ToonTankPlayerController, &AToonTankPlayerController::SetPlayerEnabledState,true);
+
+        GetWorldTimerManager().SetTimer(StartTimerHandle, PlayerEnableInputTimeDelegate, StartDelay, false);
+    }
+   
+        
+}
+
+int32 ATankGameMode:: GetTowerCount()
+{
+    TArray<AActor*> TowerActors;
+    UGameplayStatics::GetAllActorsOfClass(this,ATower::StaticClass(),TowerActors);
+
+    return TowerActors.Num();
 }

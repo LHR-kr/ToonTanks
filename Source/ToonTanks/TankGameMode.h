@@ -17,7 +17,22 @@ public:
 	void ActorDied(AActor* DiedActor);
 private:
 	class ATank* Tank;
+	class AToonTankPlayerController* ToonTankPlayerController;
+
+	float StartDelay = 3.f;
+
+	void HandleGameStart();
+
+	int32 TowerCount;
+
+	int32 GetTowerCount();
 
 protected:
 	void BeginPlay();
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void StartGame();
+	UFUNCTION(BlueprintImplementableEvent)
+	void FinishGame(bool bIsWin);
 };
+

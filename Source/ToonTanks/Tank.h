@@ -35,8 +35,17 @@ public:
 	APlayerController* GetPlayerController() const;
 	void HandleDesruction();
 
+	bool GetIsAlive() const;
+
 private:
 	void Move(float Value);
 	void Rotate(float Value);
 	APlayerController* PlayerController;
+
+	bool IsAlive;
+
+	UPROPERTY(EditDefaultsOnly,Category = "Combat")
+	//블루프린트라서  TSubClass를 하나 만들어준다.
+	TSubclassOf<class UCameraShakeBase> DieCameraShake;
+
 };

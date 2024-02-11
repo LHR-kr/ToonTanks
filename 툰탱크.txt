@@ -26,3 +26,17 @@ projectile에서 onComponentHit 이벤트 발생시 UGamePlayStatics::ApplyDamag
 과정이 꽤 복잡함 
 projectile에서 일련의 hit event 거치고, HP 컴포넌트에서 GameMode에서 ActorDie(AActor* DiedActor) 호출 -> ActorDie(DiedActor)에서 DiedActor->HandleDie() 함수 호출.
 이렇게 복잡하게 만드는 이유는 게임 시스템의 신뢰성을 보장하기 위해서인 듯?
+
+input delegate로 인자가 존재하는 함수를 타이머에 바인딩 하기
+
+blueprint implementable Events - CPP에서 선언하고, 블루프린트에서 정의 가능한 이벤트, CPP에서 블루프린트 이벤트를 호출할 수 있게 해준다.
+create widget, add to viewport로 ui 추가하기
+
+왜 widget의 construct 이벤트(begin play 이벤트)가 아니라 따로 커스텀 이벤트를 만들어서 사용 하는 거지?
+
+파티클 시스템
+particle system vs particle system component, 충돌ㅇ ㅣ펙트는 그 순간에만 생성되면 되니깐 particle system 쓰고 연기 궤적은 지속적으로 projectile의 위치에 생성되어야 하니깐 컴포넌트로 만들어서 루트에 attach한다.
+
+사운드 재생하기
+
+카메라 셰이크
