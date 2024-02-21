@@ -14,6 +14,7 @@ void ATower::Tick(float DeltaTime)
     
     
     //탱크 사이의 거리를 구하고
+    if(TargetTank)
     float DistanceTargetTank = FVector::Dist(GetActorLocation(), TargetTank->GetActorLocation());
     //거리가 유효 사거리 안이면
     //터렛을 회전

@@ -31,8 +31,6 @@ void ABasePawn::HandleDesruction()
 		UGameplayStatics::SpawnEmitterAtLocation(this,DeadParticle, GetActorLocation(),GetActorRotation());
 	if(DieSound)
 		UGameplayStatics::PlaySoundAtLocation(this,DieSound, GetActorLocation());
-	
-
 }
 
 void ABasePawn::RotateTurret(FVector TargetWorldLocationVector)
@@ -54,9 +52,10 @@ void ABasePawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 }
 
 void ABasePawn::Fire()
+
 {
 	FVector Location = ProjectileSpawnPoint->GetComponentLocation();
 	FRotator Rotator = ProjectileSpawnPoint -> GetComponentRotation();
 	auto Projectile = GetWorld()->SpawnActor<AProjectile>(ProjectileClass,Location,Rotator);
 	Projectile -> SetOwner(this);
-	}
+}

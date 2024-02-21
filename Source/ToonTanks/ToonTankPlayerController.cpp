@@ -9,7 +9,6 @@ void AToonTankPlayerController:: SetPlayerEnabledState(bool bPlayerEnabled)
     if(bPlayerEnabled)
     {
         GetPawn()->EnableInput(this);
-
     }
     else
     {

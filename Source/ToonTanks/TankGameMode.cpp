@@ -32,8 +32,6 @@ void ATankGameMode::BeginPlay()
     Super::BeginPlay();
 
     HandleGameStart();
-    
-
 }
 
 void ATankGameMode::HandleGameStart()
@@ -51,13 +49,12 @@ void ATankGameMode::HandleGameStart()
 
         GetWorldTimerManager().SetTimer(StartTimerHandle, PlayerEnableInputTimeDelegate, StartDelay, false);
     }
-   
-        
 }
 
 int32 ATankGameMode:: GetTowerCount()
 {
     TArray<AActor*> TowerActors;
+    //UClASS를 생성하기 위해서 StaticClass() 호출
     UGameplayStatics::GetAllActorsOfClass(this,ATower::StaticClass(),TowerActors);
 
     return TowerActors.Num();
