@@ -47,6 +47,7 @@ void ATankGameMode::HandleGameStart()
         FTimerHandle StartTimerHandle;
         FTimerDelegate PlayerEnableInputTimeDelegate = FTimerDelegate::CreateUObject(ToonTankPlayerController, &AToonTankPlayerController::SetPlayerEnabledState,true);
 
+        // StartDelay만큼의 시간이 흐른 뒤에 PlayerEnableInputTimeDelegate가 호출된다.
         GetWorldTimerManager().SetTimer(StartTimerHandle, PlayerEnableInputTimeDelegate, StartDelay, false);
     }
 }

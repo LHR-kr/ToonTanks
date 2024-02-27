@@ -6,29 +6,30 @@
 (완)c++코드에서 컴포넌트 부착하기
 
 폰으로 입력 받기, 입력 액션 매핑
+
 add local offset()으로 폰 이동하기
 add local rotation()으로 폰 회전하기
 위의 두 함수의 bsweep 변수
 
-플레이어 컨트롤러로 폰에 빙의
+(완)플레이어 컨트롤러로 폰에 빙의
 
 GetPlayerPawn
 
-timer로 코루틴 구현
+(완)timer로 코루틴 구현
 
 135강의, UClass와 리플렉션 시스템(c++과 블루프린트의 연결), SpawnActor에서 UClass가 왜 필요한지 (cpp클래스와 BP클래스가 가지는 차이점의 이해),  TSubclassOf 와 StaticClass
 
 
 이벤트에 함수 바인딩할 때는 함수 인자를 잘 지켜야한다.
-OnComponentHit 이벤트에 함수 바인딩
-projectile에서 onComponentHit 이벤트 발생시 UGamePlayStatics::ApplyDamage 호출 -> 피격 액터의 OnTakeAnyDamage 이벤트 호출 -> 피격 액터의 OnTakeAnyDamage에 바인딩 된 함수 호출
+(완)OnComponentHit 이벤트에 함수 바인딩
+(완)projectile에서 onComponentHit 이벤트 발생시 UGamePlayStatics::ApplyDamage 호출 -> 피격 액터의 OnTakeAnyDamage 이벤트 호출 -> 피격 액터의 OnTakeAnyDamage에 바인딩 된 함수 호출
 
 게임모드에서 액터의 죽음을 처리하는 함수를 만듦. 
 과정이 꽤 복잡함 
 projectile에서 일련의 hit event 거치고, HP 컴포넌트에서 GameMode에서 ActorDie(AActor* DiedActor) 호출 -> ActorDie(DiedActor)에서 DiedActor->HandleDie() 함수 호출.
-이렇게 복잡하게 만드는 이유는 게임 시스템의 신뢰성을 보장하기 위해서인 듯?
+탱크의 사망, 남은 상대 타워의 개수가 게임 승패에 영향을 끼치기 때문에 게임 모드를 경유해서 처리하는 것으로 추측 됨.
 
-input delegate로 인자가 존재하는 함수를 타이머에 바인딩 하기
+(완)input delegate로 인자가 존재하는 함수를 타이머에 바인딩 하기
 
 blueprint implementable Events - CPP에서 선언하고, 블루프린트에서 정의 가능한 이벤트, CPP에서 블루프린트 이벤트를 호출할 수 있게 해준다.
 create widget, add to viewport로 ui 추가하기

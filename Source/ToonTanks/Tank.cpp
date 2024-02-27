@@ -32,7 +32,7 @@ void ATank::HandleDesruction()
 }
 
 // 축 매핑에 함수를 바인딩
-void ATank::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) 
+void  ATank::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) 
 {
     Super::SetupPlayerInputComponent(PlayerInputComponent); 
     PlayerInputComponent -> BindAxis(TEXT("MoveForward"),this, & ATank::Move);

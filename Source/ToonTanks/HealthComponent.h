@@ -31,7 +31,7 @@ private:
 	
 
 	class ATankGameMode* TankGameMode;
-	//바인딩하기 위해 UFUNTION으로 선언
+	//바인딩하기 위해 UFUNTION으로 선언(리플레션)
 	UFUNCTION()
 	void OnDamage(AActor* DamagedActor, float Damage, const UDamageType* DamageType, class AController* Instigator, AActor* DamageCauser);
 };
