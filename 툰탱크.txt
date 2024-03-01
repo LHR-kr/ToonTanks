@@ -17,7 +17,7 @@ GetPlayerPawn
 
 (완)timer로 코루틴 구현
 
-135강의, UClass와 리플렉션 시스템(c++과 블루프린트의 연결), SpawnActor에서 UClass가 왜 필요한지 (cpp클래스와 BP클래스가 가지는 차이점의 이해),  TSubclassOf 와 StaticClass
+(완)135강의, UClass와 리플렉션 시스템(c++과 블루프린트의 연결), SpawnActor에서 UClass가 왜 필요한지 (cpp클래스와 BP클래스가 가지는 차이점의 이해),  TSubclassOf 와 StaticClass
 
 
 이벤트에 함수 바인딩할 때는 함수 인자를 잘 지켜야한다.
@@ -31,7 +31,7 @@ projectile에서 일련의 hit event 거치고, HP 컴포넌트에서 GameMode�
 
 (완)input delegate로 인자가 존재하는 함수를 타이머에 바인딩 하기
 
-blueprint implementable Events - CPP에서 선언하고, 블루프린트에서 정의 가능한 이벤트, CPP에서 블루프린트 이벤트를 호출할 수 있게 해준다.
+(완)blueprint implementable Events - CPP에서 선언하고, 블루프린트에서 정의 가능한 이벤트, CPP에서 블루프린트 이벤트를 호출할 수 있게 해준다.
 create widget, add to viewport로 ui 추가하기
 
 왜 widget의 construct 이벤트(begin play 이벤트)가 아니라 따로 커스텀 이벤트를 만들어서 사용 하는 거지?
